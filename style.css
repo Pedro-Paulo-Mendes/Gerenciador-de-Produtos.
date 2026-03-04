@@ -385,3 +385,45 @@ input[type="file"]::file-selector-button {
 input[type="file"]::file-selector-button:hover {
     background: var(--primary-hover);
 }
+
+/* Tamanho máximo para a miniatura da foto no formulário */
+.preview-img {
+    max-width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    margin-top: 15px;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Estilo dos botões de ação na tabela */
+.acoes-td {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-icon {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.btn-edit {
+    background-color: #3b82f6;
+}
+
+.btn-edit:hover {
+    background-color: #2563eb;
+}
+
+.btn-del {
+    background-color: #ef4444;
+}
+
+.btn-del:hover {
+    background-color: #dc2626;
+}

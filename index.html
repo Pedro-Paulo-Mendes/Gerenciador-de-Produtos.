@@ -1,81 +1,78 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafio de Estágio - Sistema Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Gestão de Produtos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <main class="container">
         <header>
-            <h1><i class="fa-solid fa-box-open"></i> Gestão de Produtos Oak Tecnologia</h1>
+            <h1><i class="fa-solid fa-box-open"></i> Produtos</h1>
         </header>
 
         <section id="tela-listagem" class="fade-in">
             <div class="acoes-topo">
                 <div class="busca-container">
                     <i class="fa-solid fa-search"></i>
-                    <input type="text" id="busca-produto" placeholder="Buscar pelo nome...">
+                    <input type="text" id="busca-produto" placeholder="Buscar produto...">
                 </div>
                 <button id="btn-novo-produto" class="btn-primary">
-                    <i class="fa-solid fa-plus"></i> Novo Produto
+                    <i class="fa-solid fa-plus"></i> Novo
                 </button>
             </div>
             
             <div class="tabela-container">
-                <table>
+                <table id="tabela-produtos">
                     <thead>
                         <tr>
                             <th>Foto</th>
-                            <th>Nome do Produto</th>
+                            <th>Nome</th>
                             <th>Valor</th>
                             <th>Status</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody id="tabela-corpo">
-                        </tbody>
+                    <tbody id="tabela-corpo"></tbody>
                 </table>
                 <div id="estado-vazio" class="hidden">
                     <i class="fa-solid fa-folder-open"></i>
-                    <p>Nenhum produto encontrado.</p>
+                    <p>Nenhum produto cadastrado.</p>
                 </div>
             </div>
         </section>
 
         <section id="tela-cadastro" class="hidden fade-in">
-            <h2 id="titulo-form">Cadastrar Produto</h2>
+            <h2 id="titulo-form">Novo Produto</h2>
             <form id="form-produto">
                 <input type="hidden" id="produto-id">
 
                 <div class="form-group">
-                    <label for="imagem">Foto do Produto (Até 2MB)</label>
-                    <input type="file" id="imagem" accept="image/*">
-                    <img id="preview-imagem" class="hidden" src="" alt="Pré-visualização" style="max-width: 120px; margin-top: 10px; border-radius: 8px; border: 1px solid var(--border);">
+                    <label for="imagem">Foto (Máx: 2MB)</label>
+                    <input type="file" id="imagem" accept="image/jpeg, image/png, image/webp">
+                    <img id="preview-imagem" class="hidden preview-img" src="" alt="Preview">
                 </div>
 
                 <div class="form-group">
                     <label for="nome">Nome do Produto</label>
-                    <input type="text" id="nome" placeholder="Ex: Teclado Mecânico" required>
+                    <input type="text" id="nome" required>
                 </div>
 
                 <div class="form-group">
                     <label for="descricao">Descrição</label>
-                    <textarea id="descricao" rows="3" placeholder="Detalhes do produto..." required></textarea>
+                    <textarea id="descricao" rows="3" required></textarea>
                 </div>
 
                 <div class="form-linha">
                     <div class="form-group">
                         <label for="valor">Valor (R$)</label>
-                        <input type="number" id="valor" step="0.01" min="0" placeholder="0.00" required>
+                        <input type="number" id="valor" step="0.01" min="0.01" required>
                     </div>
-
                     <div class="form-group">
-                        <label for="disponivel">Disponível para venda</label>
+                        <label for="disponivel">Disponível</label>
                         <select id="disponivel">
                             <option value="sim">Sim</option>
                             <option value="nao">Não</option>
@@ -84,8 +81,8 @@
                 </div>
 
                 <div class="botoes-form">
-                    <button type="submit" class="btn-primary"><i class="fa-solid fa-save"></i> Salvar</button>
-                    <button type="button" class="btn-secondary" id="btn-cancelar"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                    <button type="button" class="btn-secondary" id="btn-cancelar">Cancelar</button>
                 </div>
             </form>
         </section>
@@ -93,16 +90,16 @@
 
     <div id="modal-overlay" class="hidden">
         <div class="modal">
-            <h3>Confirmar Exclusão</h3>
-            <p>Tem certeza que deseja excluir este produto? Esta ação não pode ser desfeita.</p>
+            <h3>Excluir Produto</h3>
+            <p>Deseja realmente excluir este item? A ação não pode ser desfeita.</p>
             <div class="botoes-form">
                 <button id="btn-confirmar-exclusao" class="btn-danger">Excluir</button>
                 <button id="btn-cancelar-exclusao" class="btn-secondary">Cancelar</button>
             </div>
         </div>
     </div>
+    
     <div id="toast-container"></div>
-
     <script src="script.js"></script>
 </body>
 </html>
